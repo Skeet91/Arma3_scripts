@@ -26,7 +26,7 @@ if (isServer) then {
 
 			call SKT_buildKillers;
 			};
-		};
+		}
 	];
 };
 
