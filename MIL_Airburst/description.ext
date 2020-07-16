@@ -1,0 +1,2 @@
+#include "MIL_Airburst\defines.hpp"	//(basic level of GUI defines, nothing flash, only use if needed)
+#include "MIL_Airburst\fuseSetting_dialog.hpp"
