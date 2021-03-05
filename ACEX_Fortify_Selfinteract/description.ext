@@ -1,14 +1,9 @@
-class Extended_PreInit_EventHandlers {
+class Extended_PostInit_EventHandlers {
     class ACEX_Fortify_Selfinteract {
-        init = "call compile preprocessFileLineNumbers 'ACEX_Fortify_Selfinteract\cba_settings.sqf'";
+        init = "call compile preprocessFileLineNumbers 'ACEX_Fortify_Selfinteract\XEH_postInit.sqf'";
     };
-};
-
-class CfgFunctions {
-    #include "ACEX_Fortify_Selfinteract\cfgFunctions.hpp"
 };
 
 class ACEX_Fortify_Presets {
     #include "ACEX_Fortify_SelfInteract\skeetFortify.hpp"
 };
-// TODO Check if this can be moved to a 1 line #include and not conflict with class cfgFunctions/class ACEX_Fortify_Presets/Extended_PreInit_EventHandlers
