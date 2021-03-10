@@ -61,9 +61,11 @@ _fortifyMainMenuActions pushback ([
 	{
 		private _side = side player;
 		private _sideBudget = [_side] call acex_fortify_fnc_getBudget;
-		[format ["%1's budget is $%2",_side,_sideBudget]] call ace_common_fnc_displayTextStructured; //TODO make a child that splits out to each side
+		[format ["%1's budget is $%2",_side,_sideBudget]] call ace_common_fnc_displayTextStructured;
 	},
-	{true}
+	{true},
+	{call skt_fnc_fortifyBudgetCheckChildrenSideSelect},
+	[west, east, independent, civilian]
 ] call ace_interact_menu_fnc_createAction);
 
 
@@ -93,41 +95,26 @@ _fortifyMainMenuActions pushback ([
 	"Give all in 5m radius a Fortify tool",
 	"ACEX_Fortify_SelfInteract\icons\gift.paa",
 	{
-		private _nearUnits = [];
 		allPlayers apply
 		{
-			if (_x distance player < 5) then
+			if (_x isNotEqualTo player && {_x distance player < 5}) then
 			{
-				_nearUnits pushBack _x
+				_x addItem "ACE_Fortify";
 			};
 		};
-
-		[player, "ACE_Fortify"] remoteExec ["addItem", _nearUnits]
 	},
 	{true}
 ] call ace_interact_menu_fnc_createAction);
 
 
 
-/**
 _fortifyMainMenuActions pushback ([
 	"acexFortifyGiveSelfTool",
-	"Give Self x10 Fortify tools",
+	"Give x1 Fortify tool to yourself",
 	"ACEX_Fortify_SelfInteract\icons\gift.paa",
-	{for "_i" from 1 to 10 do {player addItem "ACE_Fortify"}},
+	{player addItem "ACE_Fortify"},
 	{true}
 ] call ace_interact_menu_fnc_createAction);
-
-
-
-_fortifyMainMenuActions pushback ([
-	"acexFortifyGiveTargetTool",
-	"Give target x1 Fortify tool",
-	"ACEX_Fortify_SelfInteract\icons\gift.paa",
-	{[player, "ACE_Fortify"] remoteExec ["addItem", cursorTarget]}, //TODO turn this into all players in area around player
-	{true}
-] call ace_interact_menu_fnc_createAction);
-**/
 
 
 

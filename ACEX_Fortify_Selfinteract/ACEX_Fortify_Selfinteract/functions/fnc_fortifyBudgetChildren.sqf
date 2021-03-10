@@ -10,10 +10,11 @@ private _fortifyBudgetPic = "ACEX_Fortify_SelfInteract\icons\dollarPos.paa";
         format ["$%1", _x],
         _fortifyBudgetPic,
         {
-            [side _player, (_this select 2), true] call acex_fortify_fnc_updateBudget
+            params ["_target", "_player", "_amount"];
+            [side _player, _amount, true] call acex_fortify_fnc_updateBudget
         },
         {true},
-        {},
+        {call skt_fnc_fortifyBudgetChildrenSideSelect},
         _x
     ] call ace_interact_menu_fnc_createAction;
     _budgetChildActions pushBack [_budgetAction, [], _player];

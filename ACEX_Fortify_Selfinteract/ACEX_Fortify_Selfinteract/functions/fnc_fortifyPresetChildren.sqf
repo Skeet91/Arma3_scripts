@@ -6,10 +6,11 @@ private _presetActions = [];
         format ["%1", _x],
         "ACEX_Fortify_SelfInteract\icons\selectedPreset.paa",
         {
-            [side _player, (_this select 2)] call skt_fnc_fortifyUpdatePreset
+            params ["_target", "_player", "_preset"];
+            [side _player, _preset] call skt_fnc_fortifyUpdatePreset;
         },
         {true},
-        {},
+        {call skt_fnc_fortifyPresetChildrenSideSelect},
         _x
     ] call ace_interact_menu_fnc_createAction;
     _presetActions pushBack [_presetAction, [], _player];
