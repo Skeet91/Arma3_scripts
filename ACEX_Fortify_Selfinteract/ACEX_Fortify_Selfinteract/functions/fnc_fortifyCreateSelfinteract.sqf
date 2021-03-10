@@ -26,8 +26,6 @@ _fortifyMainMenuActions pushback ([
 
 
 
-private _negativeBudgetValues = [SKT_fortify_budgetValues, { _x * -1 }] call CBA_fnc_filter;
-
 _fortifyMainMenuActions pushback ([
 	"acexFortifyBudgetAdd",
 	"+ Budget",
@@ -37,6 +35,10 @@ _fortifyMainMenuActions pushback ([
 	{call skt_fnc_fortifyBudgetChildren},
 	SKT_fortify_budgetValues
 ] call ace_interact_menu_fnc_createAction);
+
+
+
+private _negativeBudgetValues = [SKT_fortify_budgetValues, { _x * -1 }] call CBA_fnc_filter;
 
 
 
@@ -87,6 +89,28 @@ _fortifyMainMenuActions pushback ([
 
 
 _fortifyMainMenuActions pushback ([
+	"acexFortifyGiveTool",
+	"Give all in 5m radius a Fortify tool",
+	"ACEX_Fortify_SelfInteract\icons\gift.paa",
+	{
+		private _nearUnits = [];
+		allPlayers apply
+		{
+			if (_x distance player < 5) then
+			{
+				_nearUnits pushBack _x
+			};
+		};
+
+		[player, "ACE_Fortify"] remoteExec ["addItem", _nearUnits]
+	},
+	{true}
+] call ace_interact_menu_fnc_createAction);
+
+
+
+/**
+_fortifyMainMenuActions pushback ([
 	"acexFortifyGiveSelfTool",
 	"Give Self x10 Fortify tools",
 	"ACEX_Fortify_SelfInteract\icons\gift.paa",
@@ -103,6 +127,7 @@ _fortifyMainMenuActions pushback ([
 	{[player, "ACE_Fortify"] remoteExec ["addItem", cursorTarget]}, //TODO turn this into all players in area around player
 	{true}
 ] call ace_interact_menu_fnc_createAction);
+**/
 
 
 
