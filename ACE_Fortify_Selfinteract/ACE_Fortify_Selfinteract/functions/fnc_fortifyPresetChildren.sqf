@@ -4,7 +4,7 @@ private _presetActions = [];
     private _presetAction = [
         format ["Preset_%1", _x],
         format ["%1", _x],
-        "ACEX_Fortify_SelfInteract\icons\selectedPreset.paa",
+        "ACE_Fortify_SelfInteract\icons\selectedPreset.paa",
         {
             params ["_target", "_player", "_preset"];
             [side _player, _preset] call skt_fnc_fortifyUpdatePreset;

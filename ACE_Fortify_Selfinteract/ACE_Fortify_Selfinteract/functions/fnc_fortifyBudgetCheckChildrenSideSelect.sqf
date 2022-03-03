@@ -7,7 +7,7 @@ private _actions = [];
         "",
         {
             params ["_target", "_player", "_side"];
-            private _sideBudget = [_side] call acex_fortify_fnc_getBudget;
+            private _sideBudget = [_side] call ace_fortify_fnc_getBudget;
             [format ["%1's budget is $%2",_side,_sideBudget]] call ace_common_fnc_displayTextStructured;
         },
         {true},

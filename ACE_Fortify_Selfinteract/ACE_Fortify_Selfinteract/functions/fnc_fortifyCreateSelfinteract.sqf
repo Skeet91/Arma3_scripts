@@ -1,7 +1,7 @@
 private _fortifyMainMenu = [
-	"acexFortify",
-	"ACEX Fortify",
-	"ACEX_Fortify_SelfInteract\icons\hammer.paa",
+	"aceFortify",
+	"ACE Fortify",
+	"ACE_Fortify_SelfInteract\icons\hammer.paa",
 	{},
 	{!isMultiplayer || {is3DENMultiplayer} || {(call BIS_fnc_admin) > 0} || {!isNull (getAssignedCuratorLogic player)}}
 ] call ace_interact_menu_fnc_createAction;
@@ -15,9 +15,9 @@ private _fortifyMainMenuActions = [];
 
 
 _fortifyMainMenuActions pushback ([
-	"acexFortifyToggle",
-	"ACEX Fortify ON/OFF",
-	"ACEX_Fortify_SelfInteract\icons\powerToggle.paa",
+	"aceFortifyToggle",
+	"ACE Fortify ON/OFF",
+	"ACE_Fortify_SelfInteract\icons\powerToggle.paa",
 	{},
 	{true},
 	{call skt_fnc_fortifyToggleChildren},
@@ -27,9 +27,9 @@ _fortifyMainMenuActions pushback ([
 
 
 _fortifyMainMenuActions pushback ([
-	"acexFortifyBudgetAdd",
+	"aceFortifyBudgetAdd",
 	"+ Budget",
-	"ACEX_Fortify_SelfInteract\icons\bank.paa",
+	"ACE_Fortify_SelfInteract\icons\bank.paa",
 	{},
 	{true},
 	{call skt_fnc_fortifyBudgetChildren},
@@ -43,9 +43,9 @@ private _negativeBudgetValues = [SKT_fortify_budgetValues, { _x * -1 }] call CBA
 
 
 _fortifyMainMenuActions pushback ([
-	"acexFortifyBudgetMin",
+	"aceFortifyBudgetMin",
 	"- Budget",
-	"ACEX_Fortify_SelfInteract\icons\bankNo.paa",
+	"ACE_Fortify_SelfInteract\icons\bankNo.paa",
 	{},
 	{true},
 	{call skt_fnc_fortifyBudgetChildren},
@@ -55,12 +55,12 @@ _fortifyMainMenuActions pushback ([
 
 
 _fortifyMainMenuActions pushback ([
-	"acexFortifyBudgetCheck",
+	"aceFortifyBudgetCheck",
 	"Check Budget",
-	"ACEX_Fortify_SelfInteract\icons\search.paa",
+	"ACE_Fortify_SelfInteract\icons\search.paa",
 	{
 		private _side = side player;
-		private _sideBudget = [_side] call acex_fortify_fnc_getBudget;
+		private _sideBudget = [_side] call ace_fortify_fnc_getBudget;
 		[format ["%1's budget is $%2",_side,_sideBudget]] call ace_common_fnc_displayTextStructured;
 	},
 	{true},
@@ -79,9 +79,9 @@ private _classNamesPremade = _configsPremade apply {configName _x};
 private _combinedPresetsList = _classNamesCustom + _classNamesPremade;
 
 _fortifyMainMenuActions pushback ([
-	"acexFortifyPresetsMenu",
+	"aceFortifyPresetsMenu",
 	"Presets",
-	"ACEX_Fortify_SelfInteract\icons\list.paa",
+	"ACE_Fortify_SelfInteract\icons\list.paa",
 	{},
 	{true},
 	{call skt_fnc_fortifyPresetChildren},
@@ -91,9 +91,9 @@ _fortifyMainMenuActions pushback ([
 
 
 _fortifyMainMenuActions pushback ([
-	"acexFortifyGiveTool",
+	"aceFortifyGiveTool",
 	"Give all in 5m radius a Fortify tool",
-	"ACEX_Fortify_SelfInteract\icons\gift.paa",
+	"ACE_Fortify_SelfInteract\icons\gift.paa",
 	{
 		allPlayers apply
 		{
@@ -109,9 +109,9 @@ _fortifyMainMenuActions pushback ([
 
 
 _fortifyMainMenuActions pushback ([
-	"acexFortifyGiveSelfTool",
+	"aceFortifyGiveSelfTool",
 	"Give x1 Fortify tool to yourself",
-	"ACEX_Fortify_SelfInteract\icons\gift.paa",
+	"ACE_Fortify_SelfInteract\icons\gift.paa",
 	{player addItem "ACE_Fortify"},
 	{true}
 ] call ace_interact_menu_fnc_createAction);
@@ -131,9 +131,9 @@ private _fortifyNotesHint = {
 };
 
 _fortifyMainMenuActions pushback ([
-	"acexFortifyNotes",
+	"aceFortifyNotes",
 	"Notes",
-	"ACEX_Fortify_SelfInteract\icons\report.paa",
+	"ACE_Fortify_SelfInteract\icons\report.paa",
 	_fortifyNotesHint,
 	{true}
 ] call ace_interact_menu_fnc_createAction);
@@ -141,5 +141,5 @@ _fortifyMainMenuActions pushback ([
 
 
 {
-	[player, 1, ["ACE_SelfActions", "acexFortify"], _x] call ace_interact_menu_fnc_addActionToObject;
+	[player, 1, ["ACE_SelfActions", "aceFortify"], _x] call ace_interact_menu_fnc_addActionToObject;
 } forEach _fortifyMainMenuActions;

@@ -7,7 +7,7 @@ private _actions = [];
         "",
         {
             params ["_target", "_player", "_amountArray"];
-            [_amountArray select 0, _amountArray select 1, true] call acex_fortify_fnc_updateBudget
+            [_amountArray select 0, _amountArray select 1, true] call ace_fortify_fnc_updateBudget
         },
         {true},
         {},

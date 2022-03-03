@@ -2,12 +2,12 @@ params ["_target", "_player", "_boolArray"];
 private _toggleChildActions = [];
 {
     private _toggleAction = [
-        format ["acexFortifyToggle%1", _x],
+        format ["aceFortifyToggle%1", _x],
         format ["Allow fortification placement = %1", _x],
-        format ["ACEX_Fortify_SelfInteract\icons\toggle%1.paa", _x],
+        format ["ace_Fortify_SelfInteract\icons\toggle%1.paa", _x],
         {
             params ["_target", "_player", "_bool"];
-            missionNamespace setVariable ["acex_fortify_fortifyAllowed", _bool, true];
+            missionNamespace setVariable ["ace_fortify_fortifyAllowed", _bool, true];
         },
         {true},
         {},

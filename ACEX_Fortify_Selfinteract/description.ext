@@ -1,9 +1,0 @@
-class Extended_PostInit_EventHandlers {
-    class ACEX_Fortify_Selfinteract {
-        init = "call compile preprocessFileLineNumbers 'ACEX_Fortify_Selfinteract\XEH_postInit.sqf'";
-    };
-};
-
-class ACEX_Fortify_Presets {
-    #include "ACEX_Fortify_SelfInteract\skeetFortify.hpp"
-};
